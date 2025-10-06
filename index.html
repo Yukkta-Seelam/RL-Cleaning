@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cleaning Robot Demo</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 40px;
+    }
+    h1 {
+      color: #333;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+    }
+    .gif-container {
+      margin-top: 40px;
+    }
+    img {
+      width: 420px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧹 Cleaning Robot Simulation</h1>
+  <p>Select an algorithm to see the cleaning behavior:</p>
+
+  <select id="algoSelect" onchange="showGIF()">
+    <option value="">-- Choose Algorithm --</option>
+    <option value="q_learning_cleaning.gif">Q-Learning</option>
+    <option value="sarsa_cleaning.gif">SARSA</option>
+    <option value="dyna_q_cleaning.gif">Dyna-Q</option>
+    <option value="td_zero_cleaning.gif">TD(0)</option>
+  </select>
+
+  <div class="gif-container">
+    <img id="gifDisplay" src="" alt="Algorithm animation">
+  </div>
+
+  <script>
+    function showGIF() {
+      const select = document.getElementById("algoSelect");
+      const gif = document.getElementById("gifDisplay");
+      const value = select.value;
+
+      if (value) {
+        gif.src = value + "?t=" + new Date().getTime(); // avoid caching
+        gif.style.display = "inline";
+      } else {
+        gif.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
