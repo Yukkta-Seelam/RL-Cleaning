@@ -35,15 +35,23 @@
   </style>
 </head>
 <body>
-  <h1>🧹 Cleaning Robot Simulation</h1>
-  <p>Select an algorithm to see the cleaning behavior:</p>
+  <h1>🤖 Cleaning Robot Simulation</h1>
+  <p>Select an algorithm and grid size to view the cleaning behavior:</p>
 
   <select id="algoSelect" onchange="showGIF()">
-    <option value="">-- Choose Algorithm --</option>
-    <option value="q_learning_cleaning.gif">Q-Learning</option>
-    <option value="sarsa_cleaning.gif">SARSA</option>
-    <option value="dyna_q_cleaning.gif">Dyna-Q</option>
-    <option value="td_zero_cleaning.gif">TD(0)</option>
+    <option value="">-- Choose Simulation --</option>
+    <optgroup label="GridWorld 4×5">
+      <option value="q_learning_cleaning_4x5.gif">Q-Learning (4×5)</option>
+      <option value="sarsa_cleaning_4x5.gif">SARSA (4×5)</option>
+      <option value="dyna_q_cleaning_4x5.gif">Dyna-Q (4×5)</option>
+      <option value="td_zero_cleaning_4x5.gif">TD(0) (4×5)</option>
+    </optgroup>
+    <optgroup label="GridWorld 6×6">
+      <option value="q_learning_cleaning_6x6.gif">Q-Learning (6×6)</option>
+      <option value="sarsa_cleaning_6x6.gif">SARSA (6×6)</option>
+      <option value="dyna_q_cleaning_6x6.gif">Dyna-Q (6×6)</option>
+      <option value="td_zero_cleaning_6x6.gif">TD(0) (6×6)</option>
+    </optgroup>
   </select>
 
   <div class="gif-container">
@@ -57,7 +65,7 @@
       const value = select.value;
 
       if (value) {
-        gif.src = value + "?t=" + new Date().getTime(); // avoid caching
+        gif.src = value + "?t=" + new Date().getTime(); // prevent caching
         gif.style.display = "inline";
       } else {
         gif.style.display = "none";
